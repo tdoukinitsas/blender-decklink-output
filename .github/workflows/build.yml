@@ -2,7 +2,7 @@ name: Build
 
 # Every push and pull request builds the native DLL and the extension zip and keeps the zip
 # as a workflow artifact. Pushing a tag vX.Y.Z (matching the manifest version) also creates
-# a *draft* GitHub release with the zip attached; publish the draft by hand.
+# a GitHub release with the zip attached and the CHANGELOG section as its notes.
 
 on:
   push:
@@ -46,7 +46,7 @@ jobs:
           if-no-files-found: error
 
   release:
-    name: Draft release
+    name: Publish release
     needs: build
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
@@ -73,7 +73,7 @@ jobs:
 
       - uses: softprops/action-gh-release@v2
         with:
-          draft: true
+          draft: false
           name: ${{ github.ref_name }}
           body_path: notes.md
           files: dist/*.zip

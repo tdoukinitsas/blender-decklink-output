@@ -1,0 +1,79 @@
+name: Build
+
+# Every push and pull request builds the native DLL and the extension zip and keeps the zip
+# as a workflow artifact. Pushing a tag vX.Y.Z (matching the manifest version) also creates
+# a *draft* GitHub release with the zip attached; publish the draft by hand.
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build extension (windows-x64)
+    runs-on: windows-2022
+    outputs:
+      name: ${{ steps.package.outputs.name }}
+      version: ${{ steps.package.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check manifest and Python sources
+        run: python scripts/package.py --check ${{ startsWith(github.ref, 'refs/tags/') && format('--tag {0}', github.ref_name) || '' }}
+
+      - name: Build native DLL
+        shell: cmd
+        run: call native\build.bat
+
+      - name: Package extension zip
+        id: package
+        run: python scripts/package.py ${{ startsWith(github.ref, 'refs/tags/') && format('--tag {0}', github.ref_name) || '' }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.package.outputs.name }}
+          path: ${{ steps.package.outputs.zip }}
+          if-no-files-found: error
+
+  release:
+    name: Draft release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build.outputs.name }}
+          path: dist
+
+      - name: Release notes from CHANGELOG.md
+        run: |
+          version="${{ needs.build.outputs.version }}"
+          awk -v v="$version" '
+            $0 ~ "^## \\[?" v "\\]?" { on = 1; next }
+            on && /^## / { exit }
+            on { print }
+          ' CHANGELOG.md > notes.md
+          cat .github/release-footer.md >> notes.md
+          cat notes.md
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          name: ${{ github.ref_name }}
+          body_path: notes.md
+          files: dist/*.zip

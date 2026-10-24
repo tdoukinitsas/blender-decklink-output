@@ -1,0 +1,17 @@
+# native build output
+native/build/
+blender_decklink_output/bin/
+
+# packaging
+dist/
+
+# Python
+__pycache__/
+*.pyc
+
+# editors / OS
+.vscode/
+.idea/
+.vs/
+Thumbs.db
+.DS_Store

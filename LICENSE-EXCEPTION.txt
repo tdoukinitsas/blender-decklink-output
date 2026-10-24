@@ -1,0 +1,22 @@
+Blender Live Camera Output for Blackmagic Design DeckLink
+Additional permission under GNU GPL version 3 section 7
+
+Copyright (C) 2026 Thomas Doukinitsas
+
+This program is free software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software Foundation, either
+version 3 of the License, or (at your option) any later version (see LICENSE).
+
+As an additional permission under section 7 of the GNU General Public License version 3,
+the copyright holders give you permission to convey and run this program, and works
+based on it, when it is linked with, loads, or communicates with the Blackmagic Design
+DeckLink API: the DeckLink runtime installed by Blackmagic Desktop Video (including its
+COM components and driver), and the DeckLink SDK header and interface definition files,
+together with the code generated from them. You may do so without the source code of
+those Blackmagic Design components having to be provided under the GNU General Public
+License. You must still obey the GNU General Public License in all respects for all code
+used other than those Blackmagic Design components.
+
+If you modify this program, you may extend this additional permission to your version,
+but you are not obliged to do so. If you do not wish to, delete this additional
+permission from your version.

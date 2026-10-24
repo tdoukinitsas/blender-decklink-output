@@ -1,0 +1,5 @@
+* text=auto
+*.bat text eol=crlf
+*.dll binary
+# vendored third-party files are kept byte-for-byte
+third_party/** -text

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Copyright (C) 2026 Thomas Doukinitsas
 
-// Blender Live Camera Output for Blackmagic Design DeckLink - native bridge.
+// Live Camera Output for Blackmagic Design DeckLink - native bridge.
 // See bdo_decklink.h for the contract.
 //
 // Threading: every DeckLink COM call except the completion callback's own scheduling runs

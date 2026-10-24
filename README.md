@@ -1,4 +1,4 @@
-# Blender Live Camera Output for Blackmagic Design DeckLink
+# Live Camera Output for Blackmagic Design DeckLink
 
 A Blender add-on that sends a scene camera's picture live to a Blackmagic Design DeckLink
 (or Intensity / UltraStudio) card, so you can see the camera on a monitor, a projector or a

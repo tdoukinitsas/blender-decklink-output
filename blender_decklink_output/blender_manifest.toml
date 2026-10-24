@@ -1,13 +1,13 @@
-schema_version = "1.1.0"
+schema_version = "1.0.0"
 
 id = "blender_decklink_output"
 version = "1.0.0"
-name = "Blender Live Camera Output for Blackmagic Design DeckLink"
+name = "Live Camera Output for Blackmagic Design DeckLink"
 tagline = "Live output of a scene camera to Blackmagic DeckLink cards"
 maintainer = "Thomas Doukinitsas"
 type = "add-on"
 website = "https://github.com/tdoukinitsas/blender-decklink-output"
-tags = ["Render", "3D View"]
+tags = ["Render", "Camera", "3D View"]
 blender_version_min = "5.0.0"
 license = ["SPDX:GPL-3.0-or-later"]
 copyright = ["2026 Thomas Doukinitsas"]
@@ -15,3 +15,13 @@ platforms = ["windows-x64"]
 
 [permissions]
 files = "Caches a copy of its native DLL in the temp folder"
+
+# Used by `blender --command extension build`. scripts/package.py builds the release zip
+# and also adds the licence files from the repository root.
+[build]
+paths_exclude_pattern = [
+  "__pycache__/",
+  "*.pyc",
+  "*.zip",
+  "/.*",
+]

@@ -88,7 +88,8 @@ wraps artifacts in a second zip, so extract that once to get the extension zip.
 
 ## Making a release
 
-1. List the changes under `## [Unreleased]` in `CHANGELOG.md` as you go.
+1. List the changes in `CHANGELOG.md` as you go, under a `## [Unreleased]` heading above
+   the latest version (add the heading with the first change after a release).
 2. Bump the version:
 
    ```bat
@@ -96,9 +97,8 @@ wraps artifacts in a second zip, so extract that once to get the extension zip.
    ```
 
    This sets `version` in `blender_decklink_output/blender_manifest.toml` and renames the
-   `## [Unreleased]` section to `## [X.Y.Z] - YYYY-MM-DD`, leaving a new empty
-   `## [Unreleased]` above it. Add `-n` to preview without writing. For the first release,
-   run it with `1.0.0`: the manifest is already at 1.0.0, so only the changelog is dated.
+   `## [Unreleased]` section to `## [X.Y.Z] - YYYY-MM-DD`. Add `-n` to preview without
+   writing.
 3. Commit, then tag and push:
 
    ```bat

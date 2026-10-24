@@ -28,7 +28,7 @@ Nothing else is needed at run time. The DeckLink SDK is only needed to
 
 You can also drag the zip from Explorer onto the Blender window and confirm the install.
 
-**Blender Live Camera Output for Blackmagic Design DeckLink** should now be listed and ticked
+**Live Camera Output for Blackmagic Design DeckLink** should now be listed and ticked
 under **Preferences > Add-ons**.
 
 ## 3. Check it works
@@ -49,7 +49,7 @@ Blender** to load the new native code.
 
 ## Uninstalling
 
-Go to **Preferences > Add-ons**, expand **Blender Live Camera Output for Blackmagic Design DeckLink**
+Go to **Preferences > Add-ons**, expand **Live Camera Output for Blackmagic Design DeckLink**
 and click **Uninstall**. The add-on leaves cached DLL copies in
 `%TEMP%\blender_decklink_output`, which you can delete at any time.
 

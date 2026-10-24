@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Copyright (C) 2026 Thomas Doukinitsas
 
-"""Blender Live Camera Output for Blackmagic Design DeckLink.
+"""Live Camera Output for Blackmagic Design DeckLink.
 
 Sends a scene camera's picture live to a Blackmagic Design DeckLink card.
 

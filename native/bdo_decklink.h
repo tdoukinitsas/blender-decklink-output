@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Copyright (C) 2026 Thomas Doukinitsas
 
-/* Blender Live Camera Output for Blackmagic Design DeckLink - native bridge,
+/* Live Camera Output for Blackmagic Design DeckLink - native bridge,
  * C ABI (loaded from Python with ctypes).
  *
  * One handle = one DeckLink output running scheduled playback. The card's clock paces

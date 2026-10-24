@@ -33,7 +33,8 @@ Please include:
 5. Run `python scripts\package.py` to check the manifest and sources, then test in Blender
    with a real device if you can. Say in the pull request what you tested and on which
    hardware.
-6. Add a line to `CHANGELOG.md` under the `## [Unreleased]` heading.
+6. Add a line to `CHANGELOG.md` under a `## [Unreleased]` heading above the latest
+   version, adding the heading if it isn't there yet.
 
 CI builds every pull request. The zip it produces is attached to the workflow run, so
 reviewers can try it.

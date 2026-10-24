@@ -10,9 +10,8 @@
     python scripts/bump_version.py patch -n   show what would change, write nothing
 
 Sets `version` in blender_manifest.toml and renames the `## [Unreleased]` section of
-CHANGELOG.md to `## [X.Y.Z] - YYYY-MM-DD`, with a fresh empty `## [Unreleased]` above it.
-An exact version may equal the current one, which only dates the changelog (used for the
-first release). It does not commit or tag.
+CHANGELOG.md to `## [X.Y.Z] - YYYY-MM-DD`. An exact version may equal the current one,
+which only dates the changelog. It does not commit or tag.
 """
 
 import argparse
@@ -74,9 +73,10 @@ def main():
     if re.search(r"^## \[%s\]" % re.escape(version), changelog, re.MULTILINE):
         fail("CHANGELOG.md already has a %s section" % version)
     if not UNRELEASED.search(changelog):
-        fail("CHANGELOG.md has no '## [Unreleased]' section to release")
+        fail("CHANGELOG.md has no '## [Unreleased]' section to release: add one above the "
+             "latest version listing the changes")
     heading = "## [%s] - %s" % (version, datetime.date.today().isoformat())
-    changelog = UNRELEASED.sub("## [Unreleased]\n\n" + heading, changelog, count=1)
+    changelog = UNRELEASED.sub(heading, changelog, count=1)
     manifest = VERSION_LINE.sub('version = "%s"' % version, manifest, count=1)
 
     print("[bump] %s -> %s" % (dotted(current), version))

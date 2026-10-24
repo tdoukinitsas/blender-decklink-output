@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "blender_decklink_output"
 DLL = SOURCE / "bin" / "bdo_decklink.dll"
 MIN_VERSION = (5, 0)
-NAME = "Blender Live Camera Output for Blackmagic Design DeckLink"
+NAME = "Live Camera Output for Blackmagic Design DeckLink"
 
 
 def log(message):

@@ -1,4 +1,4 @@
-Blender Live Camera Output for Blackmagic Design DeckLink
+Live Camera Output for Blackmagic Design DeckLink
 Additional permission under GNU GPL version 3 section 7
 
 Copyright (C) 2026 Thomas Doukinitsas
